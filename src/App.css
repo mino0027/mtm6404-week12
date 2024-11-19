@@ -1,0 +1,17 @@
+.student-list{
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.student{
+    border: 1px solid #000;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.single-student{
+    max-width: 350px;
+}
