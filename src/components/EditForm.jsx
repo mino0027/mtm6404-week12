@@ -1,23 +1,21 @@
 import { useState, useEffect } from "react";
 
-export const EditForm = ({ student, onUpdate }) => {
+export const EditForm = ({ contact, onUpdate }) => {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
         email: "",
-        studentNumber: "",
     })
 
     useEffect(() => {
-        if (student) {
+        if (contact) {
             setFormData({
-                firstName: student.firstName || "",
-                lastName: student.lastName || "",
-                email: student.email || "",
-                studentNumber: student.studentNumber || "",
+                firstName: contact.firstName || "",
+                lastName: contact.lastName || "",
+                email: contact.email || "",
             });
         }
-    }, [student]);
+    }, [contact]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -46,11 +44,7 @@ export const EditForm = ({ student, onUpdate }) => {
             <label>Email:</label>
             <input type="email" name="email" value={formData.email} onChange={handleChange} />
         </div>
-        <div>
-            <label>Student Number:</label>
-            <input type="text" name="studentNumber" value={formData.studentNumber} onChange={handleChange} />
-        </div>
-        <button type="submit">Update Student</button>
+        <button type="submit">Update Contact</button>
     </form>
     );
 

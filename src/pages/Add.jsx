@@ -9,7 +9,6 @@ export const Add = () => {
         firstName: "",
         lastName: "",
         email: "",
-        studentNumber: "",
     })
 
     const handleChange = (e) => {
@@ -22,17 +21,16 @@ export const Add = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const c = collection(db, "students")
+        const c = collection(db, "contacts")
         try {
-            const student = await addDoc(c, {
+            const contact = await addDoc(c, {
                 firstName: formData.firstName,
                 lastName: formData.lastName,
                 email: formData.email,
-                studentNumber: formData.studentNumber
             })
             navigate('/');
         } catch (error) {
-            console.log('Student cannot be added', error);
+            console.log('Contact cannot be added', error);
         }
     }
 
@@ -50,11 +48,7 @@ export const Add = () => {
                 <label>Email:</label>
                 <input type="email" name="email" value={formData.email} onChange={handleChange} />
             </div>
-            <div>
-                <label>Student Number:</label>
-                <input type="text" name="studentNumber" value={formData.studentNumber} onChange={handleChange} />
-            </div>
-            <button type="submit">Add Student</button>
+            <button type="submit">Add Contact</button>
         </form>
     );
 }

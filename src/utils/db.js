@@ -1,14 +1,15 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-
 const firebaseConfig = {
-  apiKey: "AIzaSyB6vbUT6JSXnY31Nw-D5e4bpCTMoLjO5rE",
-  authDomain: "mtm6404-claist.firebaseapp.com",
-  projectId: "mtm6404-claist",
-  storageBucket: "mtm6404-claist.firebasestorage.app",
-  messagingSenderId: "346233734383",
-  appId: "1:346233734383:web:380acd8f44878a7cfe471a"
+  apiKey: "AIzaSyCLrdTwtGJr1FmQZ5czR8ncjo61CFwaCQc",
+  authDomain: "contactbook-fa188.firebaseapp.com",
+  projectId: "contactbook-fa188",
+  storageBucket: "contactbook-fa188.firebasestorage.app",
+  messagingSenderId: "1067066576432",
+  appId: "1:1067066576432:web:987996beabda6501bf67f5",
+  measurementId: "G-RE3WTMQGR4"
 };
 
 // Initialize Firebase

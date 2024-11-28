@@ -7,14 +7,14 @@ import { EditForm } from "../components/EditForm";
 export const Details = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [student, setStudent] = useState({});
+    const [contact, setContact] = useState({});
 
-    const fetchStudentById = async (studentId) => {
-        const docRef = doc(db, "students", studentId);
+    const fetchContactById = async (contactsId) => {
+        const docRef = doc(db, "contacts", contactsId);
         const docSnapshot = await getDoc(docRef);
 
         if (docSnapshot.exists()) {
-            setStudent({
+            setContact({
                 id: docSnapshot.id,
                 ...docSnapshot.data()
             })
@@ -24,51 +24,51 @@ export const Details = () => {
         }
     }
 
-    const handleUpdate = async (updatedStudent) => {
+    const handleUpdate = async (updatedContact) => {
         try {
-            const docRef = doc(db, "students", id)
-            await updateDoc(docRef, updatedStudent)
+            const docRef = doc(db, "contacts", id)
+            await updateDoc(docRef, updatedContact)
             navigate('/');
         } catch (error) {
-            console.log("Error updating student!", error)
+            console.log("Error updating contact!", error)
         }
     }
 
-    const handleStudentDelete = async () => {
+    const handleContactDelete = async () => {
         const msg = "Are you sure you want to delete?";
         try {
             if (confirm(msg) == true) {
-                const docRef = doc(db, "students", id);
+                const docRef = doc(db, "contacts", id);
                 await deleteDoc(docRef);
-                setStudent({});
+                setContact({});
                 navigate('/');
             } else {
                navigate(0); 
             }
         } catch (error) {
-            console.log("Error deleting student!", error);
+            console.log("Error deleting contact!", error);
         }
     }
 
     useEffect(() => {
-        fetchStudentById(id)
+        fetchContactById(id)
     }, [id])
 
     const DeleteButton = () => {
         return (
-            <button onClick={handleStudentDelete}>Delete ?</button>
+            <button onClick={handleContactDelete}>Delete ?</button>
         )
     }
 
     return (
         <div className="edit-form">
-            {student ? (
+            {contact ? (
                 <>
-                    <EditForm student={student} onUpdate={handleUpdate} />
+                    <EditForm contact={contact} onUpdate={handleUpdate} />
                     <DeleteButton />
                 </>
             ) : (
-               <p>Loading student details...</p> 
+               <p>Loading contact details...</p> 
             )}
         </div>
     )
